@@ -37,6 +37,8 @@ def main():
                 print(header_dic['filename'])
                 header_json = json.dumps(header_dic)
                 header_bytes = header_json.encode('utf-8')
+                print(header_json)
+                print(header_bytes)
 
                 # Second step: send the header's size
                 client.send(struct.pack('i', len(header_bytes)))
