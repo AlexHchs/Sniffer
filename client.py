@@ -23,7 +23,7 @@ def main():
 
             # Parse command and extract the related command parameters
             commands = receive.decode('utf-8').split()
-            filename = commands[1]
+            filename = commands[0]
             print(filename)
 
             # Open the file as the read, send the content back to the client host
