@@ -12,9 +12,9 @@ def main():
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server.bind((HOST, PORT))
     server.listen(5)
-    print("Waiting for connection......")
-    
+
     while True:
+        print("Waiting for connection......")
         connection, address = server.accept()
         print("Connection success......")
         try:

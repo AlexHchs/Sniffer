@@ -56,12 +56,10 @@ def main():
                 # Fifth step: remove the file after sending
                 os.remove(os.path.join(shared_directory, filename))
                 print('Finish transport file')
-            break
-        
+            break        
         except Exception:
             print(Exception)
             break
-
     client.close()
 
 if __name__ == "__main__":
