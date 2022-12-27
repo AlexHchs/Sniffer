@@ -32,6 +32,7 @@ def main():
                 'filename': filename,
                 'file_size': os.path.getsize('%s/%s' % (shared_directory, filename))
             }
+            print(shared_directory)
             header_json = json.dumps(header_dic)
             header_bytes = header_json.encode('utf-8')
 
