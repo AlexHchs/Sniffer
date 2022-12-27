@@ -18,6 +18,7 @@ def main():
         print("Connection success......")
         try:
             while True:
+                print("Wait for receiving traffic data")
                 # Receive file numbers
                 receive = connection.recv(8096)
                 if not receive: break
@@ -49,12 +50,10 @@ def main():
 
                     # Fourth step: receive the real data
                     try:
-                        print('%s/%s' % (download_directory, file_name))
                         f = open('%s/%s' % (download_directory, file_name), 'wb')
                         recv_size = 0
                         while recv_size < total_size:
                             line = connection.recv(1024)
-                            print(line)
                             f.write(line)
                             recv_size += len(line)
                             print('Total size: %s, Already downloads: %s' % (total_size, recv_size))

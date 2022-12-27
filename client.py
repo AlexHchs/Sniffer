@@ -17,6 +17,7 @@ def main():
 
     while True:
         try: 
+            print('Process transport data')
             # Checking the files in directory
             all_file_name = os.listdir(shared_directory)
             if not all_file_name: continue
@@ -56,6 +57,7 @@ def main():
                 os.remove(os.path.join(shared_directory, filename))
                 print('Finish transport file')
         except:
+            print('Error!!!')
             break
 
         # After all traffics have been send, wait for 1 second to collect the traffic
