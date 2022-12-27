@@ -36,16 +36,19 @@ def main():
                 header_json = json.dumps(header_dic)
                 header_bytes = header_json.encode('utf-8')
 
-                # Second step: send the header's size                
-                print(client.send(struct.pack('i', len(header_bytes))))
+                # Second step: send the header's size
+                print(struct.pack('i', len(header_bytes)))                
+                client.send(struct.pack('i', len(header_bytes)))
 
                 # Third step: send the header
-                print(client.send(header_bytes))
+                print(header_bytes)
+                client.send(header_bytes)
 
                 # Fourth step: send the real file
                 with open('%s/%s' % (shared_directory, filename), 'rb') as f:
                     for line in f:
-                        print(client.send(line))
+                        print(line)
+                        client.send(line)
                 
                 # Fifth step: remove the file after sending
                 os.remove(os.path.join(shared_directory, filename))
