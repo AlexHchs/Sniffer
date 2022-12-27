@@ -16,13 +16,13 @@ def main():
         connection, address = server.accept()
         while True:
             command = input('>>: ').strip()
-            if command == 'exit': break
+            if not command : continue
             
             connection.send(command.encode('utf-8'))
 
             # Open a new file as writing, then write the new file from the server host
             # First step: receive the header size
-            object = connection.recv(8)
+            object = connection.recv(4)
             header_size = struct.unpack('i', object)[0]
 
             # Second step: receive the header

@@ -18,8 +18,8 @@ def main():
         try: 
             # Receive command
             receive = client.recv(8096)
-            if not receive: continue # For Linux OS
-            print(receive)
+            if not receive: break # For Linux OS
+            print(receive.decode('utf-8').split())
 
             # Parse command and extract the related command parameters
             commands = receive.decode('utf-8').split()
