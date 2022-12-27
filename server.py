@@ -45,7 +45,7 @@ def main():
             with open('%s/%s' % (download_directory, file_name), 'wb') as f:
                 recv_size = 0
                 while recv_size < total_size:
-                    line = server.recv(1024)
+                    line = connection.recv(1024)
                     print(line)
                     f.write(line)
                     recv_size += len(line)
