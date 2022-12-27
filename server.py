@@ -9,7 +9,7 @@ def main():
     download_directory = os.getcwd()+'/traffic_collect'
     HOST = '192.168.56.13'
     PORT = 9091
-    unlock = 1
+    unlock = '1'
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server.bind((HOST, PORT))
     server.listen(5)
@@ -48,6 +48,7 @@ def main():
                 '''
                 total_size = header_dic['file_size']
                 file_name = header_dic['filename']
+                print(total_size)
                 print(download_directory)
                 print(file_name)
 
