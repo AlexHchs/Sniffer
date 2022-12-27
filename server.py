@@ -23,6 +23,7 @@ def main():
             # Open a new file as writing, then write the new file from the server host
             # First step: receive the header size
             object = connection.recv(4)
+            print(object)
             header_size = struct.unpack('i', object)[0]
 
             # Second step: receive the header
