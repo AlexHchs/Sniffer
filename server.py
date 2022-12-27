@@ -49,9 +49,11 @@ def main():
                     '''
                     total_size = header_dic['file_size']
                     file_name = header_dic['filename']
+                    print('?')
 
                     # Fourth step: receive the real data
                     with open('%s/%s' % (download_directory, file_name), 'wb') as f:
+                        print('?2')
                         recv_size = 0
                         while recv_size < total_size:
                             line = connection.recv(1024)
