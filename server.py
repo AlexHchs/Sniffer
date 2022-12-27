@@ -13,7 +13,6 @@ def main():
     server.bind((HOST, PORT))
     server.listen(5)
     print("Waiting for connection......")
-    
     while True:
         connection, address = server.accept()
         print("Connection success......")
