@@ -56,12 +56,13 @@ def main():
                 # Fifth step: remove the file after sending
                 os.remove(os.path.join(shared_directory, filename))
                 print('Finish transport file')
+                
+            # After all traffics have been send, wait for 1 second to collect the traffic
+            time.sleep(1)
         except:
             print('Error!!!')
             break
 
-        # After all traffics have been send, wait for 1 second to collect the traffic
-        time.sleep(1)
     client.close()
 
 if __name__ == "__main__":
