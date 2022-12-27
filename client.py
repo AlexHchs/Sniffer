@@ -8,7 +8,7 @@ import json
 import os
 
 def main():
-    shared_directory = os.getcwd()
+    shared_directory = os.getcwd()+'/traffic_collect'
     HOST = '192.168.56.13'
     PORT = 9091
     client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -16,13 +16,10 @@ def main():
     print("Connect success......")
 
     while True:
-        print('checkpoint')
         try: 
             # Checking the files in directory
-            print('checkpoint')
-            directory_path = os.path.dirname(shared_directory)
-            print(directory_path)
-            all_file_name = os.listdir(directory_path)
+            print(shared_directory)
+            all_file_name = os.listdir(shared_directory)
             if not all_file_name: continue
             print(all_file_name)
 
