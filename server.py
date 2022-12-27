@@ -49,7 +49,7 @@ def main():
                     '''
                     total_size = header_dic['file_size']
                     file_name = header_dic['filename']
-                    print('?')
+                    print(os.getcwd())
 
                     # Fourth step: receive the real data
                     with open('%s/%s' % (download_directory, file_name), 'wb') as f:
