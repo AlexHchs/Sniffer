@@ -48,6 +48,8 @@ def main():
                     '''
                     total_size = header_dic['file_size']
                     file_name = header_dic['filename']
+                    print(total_size)
+                    print(file_name)
 
                     # Fourth step: receive the real data
                     with open('%s/%s' % (download_directory, file_name), 'wb') as f:
