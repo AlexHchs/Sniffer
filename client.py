@@ -29,11 +29,12 @@ def main():
             for filename in all_file_name:
                 # Open the file as the read, send the content back to the client host
                 # First step: make the static size header
-                print(filename)
                 header_dic = {
                     'filename': filename,
                     'file_size': os.path.getsize('%s/%s' % (shared_directory, filename))
                 }
+                print(header_dic['file_size'])
+                print(header_dic['filename'])
                 header_json = json.dumps(header_dic)
                 header_bytes = header_json.encode('utf-8')
 
@@ -49,11 +50,11 @@ def main():
                         client.send(line)
                 
                 # Fifth step: remove the file after sending
-                os.remove(filename)
+                os.remove(os.path.join(shared_directory, filename))
 
         except:
             break
-        
+
         # After all traffics have been send, wait for 1 second to collect the traffic
         time.sleep(1)
     client.close()
