@@ -25,16 +25,13 @@ def main():
                 # Parse the command
                 command = receive.decode('utf-8').split()
                 file_number = command[0]
-                print(file_number)
                 
                 for i in range(int(file_number)):
                     # Open a new file as writing, then write the new file from the server host
                     # First step: receive the header size
-                    print(i)
                     object = connection.recv(4)
                     print(object)
                     header_size = struct.unpack('i', object)[0]
-                    print(header_size)
 
                     # Second step: receive the header
                     header_bytes = connection.recv(header_size)
@@ -51,14 +48,13 @@ def main():
                     '''
                     total_size = header_dic['file_size']
                     file_name = header_dic['filename']
-                    print(total_size)
-                    print(file_name)
 
                     # Fourth step: receive the real data
                     with open('%s/%s' % (download_directory, file_name), 'wb') as f:
                         recv_size = 0
                         while recv_size < total_size:
                             line = connection.recv(1024)
+                            print(line)
                             f.write(line)
                             recv_size += len(line)
                             print('Total size: %s, Already downloads: %s' % (total_size, recv_size))
