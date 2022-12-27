@@ -16,10 +16,13 @@ def main():
     print("Connect success......")
 
     while True:
+        print('checkpoint')
         try: 
             # Checking the files in directory
+            print('checkpoint')
             directory_path = os.path.dirname(shared_directory)+'/traffic_collect'
             all_file_name = os.listdir(directory_path)
+            print('checkpoint')
             if not all_file_name: continue
             print(directory_path)
             print(all_file_name)
