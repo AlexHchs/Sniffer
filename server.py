@@ -27,7 +27,7 @@ def main():
                 file_number = command[0]
                 print(file_number)
                 
-                for i in range(file_number):
+                for i in range(int(file_number)):
                     # Open a new file as writing, then write the new file from the server host
                     # First step: receive the header size
                     print(i)
