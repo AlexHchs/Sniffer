@@ -62,7 +62,7 @@ def main():
                     except:
                         print('Fail to open the file')
 
-        except(Exception):
+        except Exception:
             print(Exception)
             connection.close()
             break
