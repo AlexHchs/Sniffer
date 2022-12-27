@@ -20,7 +20,9 @@ def main():
             print('Process transport data')
             # Checking the files in directory
             all_file_name = os.listdir(shared_directory)
-            if not all_file_name: continue
+            if not all_file_name:
+                time.sleep(10)
+                continue
 
             # Sending file numbers
             file_number = len(all_file_name)
