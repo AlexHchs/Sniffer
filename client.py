@@ -11,11 +11,11 @@ def main():
     shared_directory = os.getcwd()+'/traffic_collect'
     HOST = '192.168.56.13'
     PORT = 9091
-    client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    client.connect((HOST, PORT))
-    print("Connect success......")
 
     while True:
+        client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        client.connect((HOST, PORT))
+        print("Connect success......")
         try: 
             print('Process transport data')
             # Checking the files in directory
