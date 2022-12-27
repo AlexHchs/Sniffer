@@ -20,11 +20,10 @@ def main():
         try: 
             # Checking the files in directory
             print('checkpoint')
-            directory_path = os.path.dirname(shared_directory)+'/traffic_collect'
-            all_file_name = os.listdir(directory_path)
-            print('checkpoint')
-            if not all_file_name: continue
+            directory_path = os.path.dirname(shared_directory)
             print(directory_path)
+            all_file_name = os.listdir(directory_path)
+            if not all_file_name: continue
             print(all_file_name)
 
             # Sending file numbers
