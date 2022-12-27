@@ -57,8 +57,10 @@ def main():
                         f.write(line)
                         recv_size += len(line)
                         print('Total size: %s, Already downloads: %s' % (total_size, recv_size))
-                        connection.send('')
+
                     print('Finish download file')
+                    command = 1
+                    connection.send(command.encode('utf-8'))
                     f.close()
                 except:
                     print('Fail to open the file')
