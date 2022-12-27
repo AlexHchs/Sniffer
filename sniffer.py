@@ -12,7 +12,7 @@ from scapy.utils import wrpcap
 
 #--------------------------------------
 
-PCAP_OUTPUT_PATH = "traffic_store"
+PCAP_OUTPUT_PATH = "traffic_collect"
 EXPIRED_UPDATE = 40
 MAX_PACKETS_IN_FLOW = 10000
 MAX_FLOW_DURATION = 120
