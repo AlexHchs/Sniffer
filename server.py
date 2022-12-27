@@ -50,6 +50,7 @@ def main():
 
                     # Fourth step: receive the real data
                     try:
+                        print('%s/%s' % (download_directory, file_name))
                         f = open('%s/%s' % (download_directory, file_name), 'wb')
                         recv_size = 0
                         while recv_size < total_size:
