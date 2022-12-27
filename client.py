@@ -7,7 +7,7 @@ import json
 import os
 
 def main():
-    shared_directory = __file__
+    shared_directory = os.getcwd()
     HOST = '192.168.56.13'
     PORT = 9091
     client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
