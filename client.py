@@ -45,10 +45,14 @@ def main():
                 client.send(header_bytes)
 
                 # Fourth step: send the real file
-                with open('%s/%s' % (shared_directory, filename), 'rb') as f:
-                    for line in f:
-                        print(line)
-                        client.send(line)
+                try:
+                    with open('%s/%s' % (shared_directory, filename), 'rb') as f:
+                        for line in f:
+                            print(line)
+                            client.send(line)
+                except:
+                    print('Fail to open the file')
+                    break
                 
                 # Fifth step: remove the file after sending
                 os.remove(os.path.join(shared_directory, filename))
