@@ -32,10 +32,13 @@ def main():
                     # First step: receive the header size
                     print(i)
                     object = connection.recv(4)
+                    print(object)
                     header_size = struct.unpack('i', object)[0]
+                    print(header_size)
 
                     # Second step: receive the header
                     header_bytes = connection.recv(header_size)
+                    print(header_bytes)
 
                     # Third step: extract the detail info. of the real data from header
                     header_json = header_bytes.decode('utf-8')
