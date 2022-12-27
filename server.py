@@ -25,6 +25,7 @@ def main():
                 # Parse the command
                 command = receive.decode('utf-8').split()
                 file_number = command[0]
+                print(file_number)
                 
                 for i in range(file_number):
                     # Open a new file as writing, then write the new file from the server host
