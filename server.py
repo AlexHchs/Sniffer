@@ -6,7 +6,7 @@ import json
 import os
 
 def main():
-    download_directory = os.getcwd()
+    download_directory = os.getcwd()+'traffic_collect'
     HOST = '192.168.56.13'
     PORT = 9091
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -63,8 +63,10 @@ def main():
                             recv_size += len(line)
                             print('Total size: %s, Already downloads: %s' % (total_size, recv_size))
         except:
+            print('checkpoint')
             connection.close()
             break
+    print('checkpoint')
     server.close()
 
 if __name__ == "__main__":
