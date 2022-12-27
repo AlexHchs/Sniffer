@@ -56,7 +56,7 @@ def main():
                 # Fifth step: remove the file after sending
                 os.remove(os.path.join(shared_directory, filename))
                 print('Finish transport file')
-                break
+            break
         except:
             print('Error!!!')
             break
