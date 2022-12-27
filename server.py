@@ -6,7 +6,7 @@ import json
 import os
 
 def main():
-    download_directory = os.getcwd()+'traffic_collect'
+    download_directory = os.getcwd()+'/traffic_collect'
     HOST = '192.168.56.13'
     PORT = 9091
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
