@@ -13,7 +13,7 @@ def main():
     PORT = 9091
     client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     client.connect((HOST, PORT))
-    print("Connect sucess......")
+    print("Connect success......")
 
     while True:
         try: 
@@ -21,6 +21,8 @@ def main():
             directory_path = os.path.dirname(shared_directory)+'/traffic_collect'
             all_file_name = os.listdir(directory_path)
             if not all_file_name: continue
+            print(directory_path)
+            print(all_file_name)
 
             # Sending file numbers
             file_number = len(all_file_name)
