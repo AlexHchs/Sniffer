@@ -22,7 +22,10 @@ def main():
             directory_path = os.path.dirname(shared_directory)
             all_file_name = os.listdir(directory_path)
             if not all_file_name: continue
+
+            # Sending file numbers
             file_number = numpy.size(all_file_name)
+            client.send(str(file_number).encode('utf-8'))
             
             # Start to transport the files from all_file_name
             for filename in all_file_name:
