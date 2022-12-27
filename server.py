@@ -52,15 +52,17 @@ def main():
                     print(os.getcwd())
 
                     # Fourth step: receive the real data
-                    with open('%s/%s' % (download_directory, file_name), 'wb') as f:
-                        print('?2')
-                        recv_size = 0
-                        while recv_size < total_size:
-                            line = connection.recv(1024)
-                            print(line)
-                            f.write(line)
-                            recv_size += len(line)
-                            print('Total size: %s, Already downloads: %s' % (total_size, recv_size))
+                    try:
+                        with open('%s/%s' % (download_directory, file_name), 'wb') as f:
+                            recv_size = 0
+                            while recv_size < total_size:
+                                line = connection.recv(1024)
+                                print(line)
+                                f.write(line)
+                                recv_size += len(line)
+                                print('Total size: %s, Already downloads: %s' % (total_size, recv_size))
+                    except:
+                        print('Fail to open the file')
         except:
             print('checkpoint')
             connection.close()
