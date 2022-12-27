@@ -57,8 +57,8 @@ def main():
                 os.remove(os.path.join(shared_directory, filename))
                 print('Finish transport file')
             break
-        except:
-            print('Error!!!')
+        except(Exception):
+            print(Exception)
             break
 
     client.close()

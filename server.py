@@ -63,6 +63,7 @@ def main():
                         print('Fail to open the file')
 
         except(Exception):
+            print(Exception)
             connection.close()
             break
     server.close()
