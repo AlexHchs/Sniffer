@@ -48,6 +48,7 @@ def main():
                     f = open('%s/%s' % (shared_directory, filename), 'rb')
                     for line in f:
                         client.send(line)
+                        client.recv(1024)
                     f.close()
                 except:
                     print('Fail to open the file')
