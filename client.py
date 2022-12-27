@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 # -*-coding:utf-8 -*-
+import numpy
+import time
 import socket
 import subprocess
 import struct
@@ -16,37 +18,40 @@ def main():
 
     while True:
         try: 
-            # Receive command
-            receive = client.recv(8096)
-            if not receive: break # For Linux OS
-            print(receive.decode('utf-8').split())
+            # Checking the files in directory
+            directory_path = os.path.dirname(shared_directory)
+            all_file_name = os.listdir(directory_path)
+            if not all_file_name: continue
+            file_number = numpy.size(all_file_name)
+            
+            # Start to transport the files from all_file_name
+            for filename in all_file_name:
+                # Open the file as the read, send the content back to the client host
+                # First step: make the static size header
+                header_dic = {
+                    'filename': filename,
+                    'file_size': os.path.getsize('%s/%s' % (shared_directory, filename))
+                }
+                header_json = json.dumps(header_dic)
+                header_bytes = header_json.encode('utf-8')
 
-            # Parse command and extract the related command parameters
-            commands = receive.decode('utf-8').split()
-            filename = commands[0]
-            print(filename)
+                # Second step: send the header's size
+                client.send(struct.pack('i', len(header_bytes)))
 
-            # Open the file as the read, send the content back to the client host
-            # First step: make the static size header
-            header_dic = {
-                'filename': filename,
-                'file_size': os.path.getsize('%s/%s' % (shared_directory, filename))
-            }
-            print(shared_directory)
-            header_json = json.dumps(header_dic)
-            header_bytes = header_json.encode('utf-8')
+                # Third step: send the header
+                client.send(header_bytes)
 
-            # Second step: send the header's size
-            client.send(struct.pack('i', len(header_bytes)))
+                # Fourth step: send the real file
+                with open('%s/%s' % (shared_directory, filename), 'rb') as f:
+                    for line in f:
+                        client.send(line)
+                
+                # Fifth step: remove the file after sending
+                os.remove(filename)
 
-            # Third step: send the header
-            client.send(header_bytes)
+            # After all traffics have been send, wait for 1 second to collect the traffic
+            time.sleep(1)
 
-            # Fourth step: send the real file
-            with open('%s/%s' % (shared_directory, filename), 'rb') as f:
-                for line in f:
-                    print(line)
-                    client.send(line)
         except:
             break
     client.close()
