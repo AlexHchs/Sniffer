@@ -61,7 +61,8 @@ def main():
                         f.close()
                     except:
                         print('Fail to open the file')
-        except:
+
+        except(Exception):
             connection.close()
             break
     server.close()
