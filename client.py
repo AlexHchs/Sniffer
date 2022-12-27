@@ -44,7 +44,7 @@ def main():
                 client.send(header_bytes)
 
                 # Fourth step: send the real file
-                while client.recv(1):
+                while not client.recv(1):
                     None
                 try:
                     f = open('%s/%s' % (shared_directory, filename), 'rb')
@@ -56,7 +56,7 @@ def main():
                     break
                 
                 # Fifth step: remove the file after sending finish
-                while client.recv(1):
+                while not client.recv(1):
                     None
                 os.remove(os.path.join(shared_directory, filename))
                 print('Finish transport file')
