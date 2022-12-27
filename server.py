@@ -9,6 +9,7 @@ def main():
     download_directory = os.getcwd()+'/traffic_collect'
     HOST = '192.168.56.13'
     PORT = 9091
+    unlock = 1
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server.bind((HOST, PORT))
     server.listen(5)
@@ -51,6 +52,7 @@ def main():
                 print(file_name)
 
                 # Fourth step: receive the real data
+                connection.send(unlock.encode('utf-8'))
                 try:
                     f = open('%s/%s' % (download_directory, file_name), 'wb')
                     recv_size = 0
@@ -61,8 +63,7 @@ def main():
                         print('Total size: %s, Already downloads: %s' % (total_size, recv_size))
                     print('Finish download file')
                     f.close()
-                    command = 1
-                    connection.send(command.encode('utf-8'))
+                    connection.send(unlock.encode('utf-8'))
 
                 except:
                     print('Fail to open the file')

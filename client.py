@@ -44,6 +44,8 @@ def main():
                 client.send(header_bytes)
 
                 # Fourth step: send the real file
+                while client.recv(1):
+                    None
                 try:
                     f = open('%s/%s' % (shared_directory, filename), 'rb')
                     for line in f:
@@ -54,10 +56,13 @@ def main():
                     break
                 
                 # Fifth step: remove the file after sending finish
-                lock = client.recv(1)
+                while client.recv(1):
+                    None
                 os.remove(os.path.join(shared_directory, filename))
                 print('Finish transport file')
-            break        
+
+            time.sleep(1)
+        
         except Exception:
             print(Exception)
             break
