@@ -19,9 +19,10 @@ def main():
     while True:
         try: 
             # Checking the files in directory
-            directory_path = os.path.dirname(shared_directory)
+            directory_path = os.path.dirname(shared_directory)+'/traffic_collect'
             all_file_name = os.listdir(directory_path)
             if not all_file_name: continue
+            print(all_file_name)
 
             # Sending file numbers
             file_number = numpy.size(all_file_name)
