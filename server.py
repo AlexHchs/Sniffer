@@ -46,6 +46,7 @@ def main():
                 recv_size = 0
                 while recv_size < total_size:
                     line = server.recv(1024)
+                    print(line)
                     f.write(line)
                     recv_size += len(line)
                     print('Total size: %s, Already downloads: %s' % (total_size, recv_size))

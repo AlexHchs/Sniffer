@@ -45,6 +45,7 @@ def main():
             # Fourth step: send the real file
             with open('%s/%s' % (shared_directory, filename), 'rb') as f:
                 for line in f:
+                    print(line)
                     client.send(line)
         except:
             break
