@@ -10,7 +10,7 @@ import os
 def main():
     shared_directory = os.getcwd()+'/traffic_collect'
     HOST = '192.168.56.13'
-    PORT = 9090
+    PORT = 9091
     client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     client.connect((HOST, PORT))
     print("Connect success......")
@@ -53,7 +53,7 @@ def main():
                     print('Fail to open the file')
                     break
                 
-                # Fifth step: remove the file after sending
+                # Fifth step: remove the file after sending finish
                 lock = client.recv(1)
                 os.remove(os.path.join(shared_directory, filename))
                 print('Finish transport file')
