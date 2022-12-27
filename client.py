@@ -41,6 +41,7 @@ def main():
                 print(header_bytes)
 
                 # Second step: send the header's size
+                print(struct.pack('i', len(header_bytes)))
                 client.send(struct.pack('i', len(header_bytes)))
 
                 # Third step: send the header
