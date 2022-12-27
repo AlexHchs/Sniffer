@@ -8,7 +8,7 @@ import os
 def main():
     download_directory = os.getcwd()+'/traffic_collect'
     HOST = '192.168.56.13'
-    PORT = 9091
+    PORT = 9090
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server.bind((HOST, PORT))
     server.listen(5)
