@@ -46,7 +46,6 @@ def main():
                     '''
                     total_size = header_dic['file_size']
                     file_name = header_dic['filename']
-                    print(file_name)
 
                     # Fourth step: receive the real data
                     try:
@@ -59,14 +58,13 @@ def main():
                             f.write(line)
                             recv_size += len(line)
                             print('Total size: %s, Already downloads: %s' % (total_size, recv_size))
+                        print('Finish download file')
                         f.close()
                     except:
                         print('Fail to open the file')
         except:
-            print('checkpoint')
             connection.close()
             break
-    print('checkpoint')
     server.close()
 
 if __name__ == "__main__":
